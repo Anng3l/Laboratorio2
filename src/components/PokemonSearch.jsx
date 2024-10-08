@@ -43,15 +43,21 @@ function PokemonSearch( { handleGoBack, setShowPokemon1, setShowPokemon2 } ) {
 
           //Botones
           const newPokemonSeleccionar = pokemonSeleccionar.cloneNode(true);
+          newPokemonSeleccionar.className = "btn btn-primary col-3 rounded shadow";
+          newPokemonSeleccionar.textContent = "Seleccionar";
+          newPokemonSeleccionar.style.margin = "auto";
+          newPokemonSeleccionar.style.width = "auto";
+          newPokemonSeleccionar.style.height = "50%"; 
+          newPokemonSeleccionar.style.fontSize = "14px";
           pokemonsId.push({id: jsonObtenidos.id, img: jsonObtenidos.sprites.front_default});
           newPokemonSeleccionar.onclick = () => {
-    if (setShowPokemon1 === "") {
-        setShowPokemon1(jsonObtenidos.sprites.front_default);
-    } else if (setShowPokemon2 === "") {
-        setShowPokemon2(jsonObtenidos.sprites.front_default);
-    }
-    handleGoBack();
-};
+            if (setShowPokemon1 === "") {
+                setShowPokemon1(jsonObtenidos.sprites.front_default);
+            } else if (setShowPokemon2 === "") {
+                setShowPokemon2(jsonObtenidos.sprites.front_default);
+            }
+            handleGoBack();
+          };
 
 
           container.appendChild(newPokemonImagen);
@@ -63,6 +69,7 @@ function PokemonSearch( { handleGoBack, setShowPokemon1, setShowPokemon2 } ) {
         pokemonImagen.remove();
         pokemonNombre.remove();
         pokemonTipos.remove();
+        pokemonSeleccionar.remove();
       }
 
       fetchData();
